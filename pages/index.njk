@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+<body>
+  <script type="text/javascript">
+     if ( ! document.querySelector("base") ) {
+         document.location.replace("{{ config.serviceUri }}/_" + document.location.hostname);
+     }
+  </script>
+</html>

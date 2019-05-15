@@ -324,7 +324,6 @@ function getUser(name) {
 
 function getTenant(callback) {
     getIssuer(function(issuer) {
-        console.log(issuer);
         $.ajax({
           url: "https://" + issuer + "/tenant/",
           dataType: "json",

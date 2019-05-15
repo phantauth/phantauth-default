@@ -213,6 +213,7 @@ function init() {
     var theme = tenant.theme || "{{ config.developerPortalUri }}/bootstrap-phantauth.min.css";
     $('head').append('<link rel="stylesheet" type="text/css" href="' + theme + '" crossorigin="anonymous">');
     $("title").text(tenant.name);
+		$("link[rel='shortcut icon']").attr("href", tenant.favicon);
 
     rivets.bind($('#tenant'), { tenant: tenant });
 

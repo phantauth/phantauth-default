@@ -139,6 +139,8 @@ permalink: "tenant.html"
         <tr th:if="${tenant.script}"><td>script</td><td><a th:utext="${tenant.script}" th:attr="href=${tenant.script}"></a></td></tr>
         <tr th:if="${tenant.depot}" ><td>depot</td><td th:utext="${tenant.depot}"></td></tr>
         <tr th:if="${tenant.theme}"><td>theme</td><td><a th:utext="${tenant.theme}" th:attr="href=${tenant.theme}"></a></td></tr>
+        <tr th:if="${tenant.logo}"><td>logo</td><td><a th:utext="${tenant.logo}" th:attr="href=${tenant.logo}"></a></td></tr>
+        <tr th:if="${tenant.favicon}"><td>favicon</td><td><a th:utext="${tenant.favicon}" th:attr="href=${tenant.favicon}"></a></td></tr>
         <tr><td>@id</td><td><a th:utext="${tenant.id}" th:attr="href=${tenant.id}"></a></td></tr>
     </table>
 

@@ -6,6 +6,7 @@ permalink: "settings.html"
 
 <head>
   <link th:fragment="theme" rel="stylesheet" th:attr="href=${tenant.theme == null ? '{{ config.developerPortalUri }}/bootstrap-phantauth.min.css' : tenant.theme}" crossorigin="anonymous"/>
+  <link th:fragment="favicon" rel="shortcut icon" th:attr="href=${tenant.favicon == null ? '{{ config.developerPortalUri }}/logo/phantauth-favicon.png' : tenant.favicon}" />
 </head>
 
 <body>

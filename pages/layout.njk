@@ -10,7 +10,7 @@ permalink: "layout.html"
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="shortcut icon" href="{{ config.developerPortalUri }}/logo/phantauth-favicon.png" />
+  <link th:replace="settings :: favicon"/>
 
   <link th:replace="settings :: theme"/>
   <link rel="stylesheet" href="{{ config.developerPortalUri }}/phantauth.css" crossorigin="anonymous"/>

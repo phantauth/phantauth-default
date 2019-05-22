@@ -4,7 +4,7 @@ permalink: "tenant.html"
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-<head th:include="layout :: head(${tenant.sub})"/>
+<head th:include="layout :: head(${tenant.name})"/>
 
 <body>
   <nav th:replace="${widget == ''} ? ~{layout :: navbar('')} : ~{}"></nav>
@@ -17,7 +17,7 @@ permalink: "tenant.html"
     </div>
 
     <h3>Issuer</h3>
-    <p>This is the issuer endpoint for <strong><span th:replace="settings :: name"></span></strong> (<span th:utext="${tenant.sub}"></span>) tenant.
+    <p>This is the issuer endpoint for <strong><span th:replace="settings :: name"></span></strong> tenant.
     You can get OpenID Connect endpoint addresses and client credentials here.
     </p>
 

@@ -12,7 +12,11 @@ module.exports = function(eleventyConfig) {
       output: "public",
       data: ".data"
     },
-    passthroughFileCopy: true
-  }
+    passthroughFileCopy: true,
+    templateFormats: [
+    "njk",
+    "css","png","svg"
+    ]
+   }
 };
 

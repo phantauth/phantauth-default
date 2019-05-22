@@ -3,16 +3,14 @@
   "version": "1.0.0",
   "description": "PhantAuth Default tenant",
   "scripts": {
-    "build1": "mkdir -p public; cp -rp starter/* public/ ; cp -r static/* public/; replace-in-file --isRegex true /phantauth.me/g $PHANTAUTH_DOMAIN 'public/*.html,public/*.js'",
     "build": "eleventy"
   },
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/phantauth/phantauth-tenant.git"
+    "url": "https://github.com/phantauth/phantauth-default.git"
   },
   "devDependencies": {
-    "replace-in-file": "^3.4.3",
     "@11ty/eleventy": "^0.7.1"
   }
 }

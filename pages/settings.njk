@@ -5,12 +5,12 @@ permalink: "settings.html"
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-  <link th:fragment="theme" rel="stylesheet" th:attr="href=${tenant.theme == null ? '{{ config.developerPortalUri }}/bootstrap-phantauth.min.css' : tenant.theme}" crossorigin="anonymous"/>
-  <link th:fragment="favicon" rel="shortcut icon" th:attr="href=${tenant.favicon == null ? '{{ config.developerPortalUri }}/logo/phantauth-favicon.png' : tenant.favicon}" />
+  <link th:fragment="theme" rel="stylesheet" th:attr="href=${tenant.theme == null ? 'bootstrap-phantauth.min.css' : tenant.theme}" crossorigin="anonymous"/>
+  <link th:fragment="favicon" rel="shortcut icon" th:attr="href=${tenant.favicon == null ? 'logo/phantauth-favicon.png' : tenant.favicon}" />
 </head>
 
 <body>
-  <img th:fragment="logo" th:attr="src=${tenant.logo == null ? '{{ config.developerPortalUri }}/logo/phantauth-logo-light.svg' : tenant.logo}"></img>
+  <img th:fragment="logo" th:attr="src=${tenant.logo == null ? 'logo/phantauth-logo-light.svg' : tenant.logo}"></img>
   <span th:fragment="name" th:utext="${tenant.name == null ? 'PhantAuth' : tenant.name}"></span>
   <div th:fragment="widgets">
   

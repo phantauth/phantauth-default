@@ -15,6 +15,26 @@ permalink: "tenant.html"
       <h2 class="display-6"><img th:attr="src=${tenant.logo}"/><span th:utext="${tenant.name}"></span></h2>
       <p th:if="${tenant.summary}" class="lead" th:utext="${tenant.summary}"></p>
     </div>
+    <script th:if="${ ! #strings.isEmpty(tenant.attribution) || ! #strings.isEmpty(tenant.about)}" src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.1/marked.min.js"></script>
+
+    <div th:if="${ ! #strings.isEmpty(tenant.about) && ! #strings.startsWith(tenant.about, 'http')}">
+      <p id="about" th:attr="data-markdown=${tenant.about}"></p>
+      <script type="text/javascript">
+        document.getElementById('about').innerHTML = marked(document.getElementById('about').getAttribute('data-markdown'));
+      </script>
+    </div>
+    <div th:if="${ ! #strings.isEmpty(tenant.about) && #strings.startsWith(tenant.about, 'http')}">
+      <div id="about" th:attr="data-href=${tenant.about}"></div>
+      <script type="text/javascript">
+        $.ajax({
+          url: document.getElementById('about').getAttribute('data-href'),
+          dataType: 'text',
+          success: function(data) {
+            document.getElementById('about').innerHTML = marked(data);
+            }
+          });
+      </script>
+    </div>
 
     <h3>Issuer</h3>
     <p>This is the issuer endpoint for <strong><span th:replace="settings :: name"></span></strong> tenant.
@@ -22,7 +42,6 @@ permalink: "tenant.html"
     </p>
 
     <div th:if="${ ! #strings.isEmpty(tenant.attribution) }" class="ml-5 border-left pl-3">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.6.1/marked.min.js"></script>
       <h6>Attribution</h6>
       <p id="attribution" th:attr="data-markdown=${tenant.attribution}"></p>
       <script type="text/javascript">
@@ -130,14 +149,17 @@ permalink: "tenant.html"
         <tr><td>sub</td><td th:utext="${tenant.sub}"></td></tr>
         <tr th:if="${tenant.name}"><td>name</td><td th:utext="${tenant.name}"></td></tr>
         <tr th:if="${tenant.summary}"><td>summary</td><td th:utext="${tenant.summary}"></td></tr>
+        <tr th:if="${tenant.about}"><td>about</td><td th:utext="${tenant.about}"></td></tr>
         <tr th:if="${tenant.userinfo}"><td>userinfo</td><td th:utext="${tenant.userinfo}"></td></tr>
         <tr th:if="${tenant.flags}"><td>flags</td><td th:utext="${tenant.flags}"></td></tr>
         <tr th:if="${tenant.sheet}"><td>sheet</td><td th:utext="${tenant.sheet}"></td></tr>
         <tr th:if="${tenant.template}"><td>template</td><td th:utext="${tenant.template}"></td></tr>
         <tr th:if="${tenant.website}"><td>website</td><td><a th:utext="${tenant.website}" th:attr="href=${tenant.website}"></a></td></tr>
         <tr th:if="${tenant.factory}"><td>factory</td><td th:utext="${tenant.factory}"></td></tr>
+        <tr th:if="${! #lists.isEmpty(tenant.factories)}"><td>factories</td><td th:utext="${tenant.factories}"></td></tr>
         <tr th:if="${tenant.script}"><td>script</td><td><a th:utext="${tenant.script}" th:attr="href=${tenant.script}"></a></td></tr>
         <tr th:if="${tenant.depot}" ><td>depot</td><td th:utext="${tenant.depot}"></td></tr>
+        <tr th:if="${! #lists.isEmpty(tenant.depots)}" ><td>depots</td><td th:utext="${tenant.depots}"></td></tr>
         <tr th:if="${tenant.theme}"><td>theme</td><td><a th:utext="${tenant.theme}" th:attr="href=${tenant.theme}"></a></td></tr>
         <tr th:if="${tenant.logo}"><td>logo</td><td><a th:utext="${tenant.logo}" th:attr="href=${tenant.logo}"></a></td></tr>
         <tr th:if="${tenant.favicon}"><td>favicon</td><td><a th:utext="${tenant.favicon}" th:attr="href=${tenant.favicon}"></a></td></tr>

@@ -4,6 +4,10 @@ permalink: "tenant.html"
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 
+<head>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bs-stepper/dist/css/bs-stepper.min.css">
+  <script src="//cdn.jsdelivr.net/npm/bs-stepper/dist/js/bs-stepper.min.js"></script>
+</head>
 <head th:include="layout :: head(${tenant.name})"/>
 
 <body>
@@ -33,6 +37,46 @@ permalink: "tenant.html"
             document.getElementById('about').innerHTML = marked(data);
             }
           });
+      </script>
+    </div>
+
+    <h3 style="display: none;">Setup steps</h3>
+    <div class="bs-stepper vertical" style="display: none;">
+      <div class="bs-stepper-header" role="tablist">
+        <div class="step" data-target="#setup-step1">
+          <button type="button" class="step-trigger" role="tab" aria-controls="setup-step1" id="setup-step1-trigger">
+            <span class="bs-stepper-circle">1</span>
+            <span class="bs-stepper-label">Try it!</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#setup-step2">
+          <button type="button" class="step-trigger" role="tab" aria-controls="setup-step2" id="setup-step2-trigger">
+            <span class="bs-stepper-circle">2</span>
+            <span class="bs-stepper-label">Client</span>
+          </button>
+        </div>
+        <div class="line"></div>
+        <div class="step" data-target="#setup-step3">
+          <button type="button" class="step-trigger" role="tab" aria-controls="setup-step3" id="setup-step3-trigger">
+            <span class="bs-stepper-circle">3</span>
+            <span class="bs-stepper-label">Endpoints</span>
+          </button>
+        </div>
+      </div>
+      <div class="bs-stepper-content">
+        <div id="setup-step1" class="content" role="tabpanel" aria-labelledby="setup-step1-trigger">
+        Lets try authentication on <a th:attr="href=${ #strings.append(tenant.issuer,'/test')}">OpenID Connect Test</a> page! Ofcourse it is on optional step, you can skip it.
+        </div>
+        <div id="setup-step2" class="content" role="tabpanel" aria-labelledby="setup-step2-trigger">
+        </div>
+        <div id="setup-step3" class="content" role="tabpanel" aria-labelledby="setup-step3-trigger">
+        </div>
+      </div>
+      <script>
+        $(function() {
+          var stepper = new Stepper($('.bs-stepper')[0], {linear: false});
+        });
       </script>
     </div>
 
@@ -131,7 +175,7 @@ permalink: "tenant.html"
     </div>
     
     <p>The table bellow contains REST endpoints for random generated resources.
-      <br/>Check <a href="{{ config.developerPortalUri }}/api">PhantAuth API documantation</a> for more information.
+      <br/>Check <a href="{{ config.developerPortalUri }}/api">PhantAuth API documentation</a> for more information.
     </p>
     <table class="table table-striped table-sm table-borderless">
       <tr><th>Endpoint</th><th>Location</th></tr>
